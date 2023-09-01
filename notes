@@ -1,0 +1,56 @@
+/* NOTES */
+
+--> Server side functions
+1. socket()
+2. bind()
+3. listen()
+4. accept()
+5. read()
+6. write()
+7. close()
+
+--> Client side functions
+1. socket()
+2.
+3.
+4. connection()
+5. write()
+6. read()
+7. close()
+
+- Socket port number and type needs to be the same
+
+/**
+* socket - returns file descriptor (int) 
+* @domain: specifies the address family - AF_INET (IPv4)
+* @type: communication type. 2 types...
+* ... SOCK_STREAM => TCP (This will be used)
+* SOCK_DGRAM => UDP
+* @protocol: 0 (default for TCP protocol)
+*/
+int sockfd = socket(int domain, int type, int protocol);
+
+
+/**
+* bind - assigns the address specified by @addr to the socket..
+* .. referred by file descriptor @sockfd.
+* socket initially exists in the name space, with no...
+* ... address assigned to it.
+*
+* @sockfd - file descriptor from socket()
+* @addr - pointer to the address
+* @addrlen - specifies the size (bytes) of the address struct..
+* .. pointed by @addr
+*/
+int bind (int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+
+
+/**
+* sockaddr - cast the struct pointer passed in 'addr' to avoid..
+* .. compiler warnings
+*/
+struct sockaddr 
+{
+    sa_family_t sa_family;
+    char sa_data[14];
+}
