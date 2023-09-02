@@ -37,9 +37,9 @@ int sockfd = socket(int domain, int type, int protocol);
 * socket initially exists in the name space, with no...
 * ... address assigned to it.
 *
-* @sockfd - file descriptor from socket()
-* @addr - pointer to the address
-* @addrlen - specifies the size (bytes) of the address struct..
+* @sockfd: file descriptor from socket()
+* @addr: pointer to the address
+* @addrlen: specifies the size (bytes) of the address struct..
 * .. pointed by @addr
 * Return: 0 (SUCCESS) or -1 (FAILURE)
 */
@@ -58,24 +58,38 @@ struct sockaddr
 
 /**
 * listen - listens for connections on a socket
-* @sockfd - file descriptor
-* @backlog - number of connections a system can handle a single time
+* @sockfd: file descriptor
+* @backlog: number of connections a system can handle a single time
 */
 int listen(int sockfd, int backlog);
 
 /**
-* accepts - returns a file descriptor
+* accepts - [description below]
 * newsockfd file descriptor - used for all comm. that will take...
 * ... place after listen()
 */
 
 int newsockfd = accept(sockfd, (struct sockaddr *)&addr, &addrlen);
 
-
 accept() - waits for connection() to be generated on the client side...
 ... and responds to it.
 
 /**
 * connect - 
+* Return: 0 (SUCCESS) or -1 (FAILURE)
 */
 int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);
+
+/**
+* read -
+* @buffer: string (message) that'll be passed
+* @buffer_size: string length
+*/
+int read(newsockfd, buffer, buffer_size);
+
+/**
+* write -
+* @buffer: string (message) that'll be passed
+* @buffer_size: string length
+*/
+int write(newsockfd, buffer, buffer_size);
