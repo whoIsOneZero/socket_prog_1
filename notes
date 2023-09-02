@@ -41,12 +41,13 @@ int sockfd = socket(int domain, int type, int protocol);
 * @addr - pointer to the address
 * @addrlen - specifies the size (bytes) of the address struct..
 * .. pointed by @addr
+* Return: 0 (SUCCESS) or -1 (FAILURE)
 */
 int bind (int sockfd, const struct sockaddr *addr, socklen_t addrlen);
 
 
 /**
-* sockaddr - cast the struct pointer passed in 'addr' to avoid..
+* sockaddr - cast the struct pointer parsed in 'addr' to avoid..
 * .. compiler warnings
 */
 struct sockaddr 
@@ -54,3 +55,27 @@ struct sockaddr
     sa_family_t sa_family;
     char sa_data[14];
 }
+
+/**
+* listen - listens for connections on a socket
+* @sockfd - file descriptor
+* @backlog - number of connections a system can handle a single time
+*/
+int listen(int sockfd, int backlog);
+
+/**
+* accepts - returns a file descriptor
+* newsockfd file descriptor - used for all comm. that will take...
+* ... place after listen()
+*/
+
+int newsockfd = accept(sockfd, (struct sockaddr *)&addr, &addrlen);
+
+
+accept() - waits for connection() to be generated on the client side...
+... and responds to it.
+
+/**
+* connect - 
+*/
+int connect(int sockfd, const struct sockaddr *addr, socklen_t addrlen);

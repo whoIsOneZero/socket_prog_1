@@ -1,0 +1,78 @@
+Certainly, I can provide you with an overview of socket programming in C. Socket programming allows you to create networked applications that can communicate over a network using sockets. Sockets provide a low-level interface for network communication, enabling data exchange between processes running on different machines. Here's a basic introduction to socket programming in C:
+
+1. **Include Necessary Headers:**
+   To start working with sockets in C, include the required headers:
+
+   ```c
+   #include <stdio.h>
+   #include <stdlib.h>
+   #include <string.h>
+   #include <unistd.h>
+   #include <sys/socket.h>
+   #include <netinet/in.h>
+   ```
+
+2. **Create a Socket:**
+   To create a socket, use the `socket()` function. This function takes parameters to specify the communication domain (IPv4 or IPv6), the socket type (TCP or UDP), and the protocol (usually 0 for the default protocol).
+
+   ```c
+   int sockfd = socket(AF_INET, SOCK_STREAM, 0); // Create a TCP socket
+   if (sockfd == -1) {
+       perror("Error creating socket");
+       exit(EXIT_FAILURE);
+   }
+   ```
+
+3. **Specify Server Address:**
+   For client applications, you need to specify the server's address (IP address and port number) to connect to. Store this information in a `struct sockaddr_in`.
+
+   ```c
+   struct sockaddr_in server_addr;
+   memset(&server_addr, 0, sizeof(server_addr));
+   server_addr.sin_family = AF_INET;
+   server_addr.sin_port = htons(PORT_NUMBER); // Replace with the desired port number
+   server_addr.sin_addr.s_addr = inet_addr("SERVER_IP_ADDRESS"); // Replace with the server's IP address
+   ```
+
+4. **Connect to the Server:**
+   To establish a connection with the server, use the `connect()` function:
+
+   ```c
+   if (connect(sockfd, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1) {
+       perror("Error connecting to the server");
+       close(sockfd);
+       exit(EXIT_FAILURE);
+   }
+   ```
+
+5. **Send and Receive Data:**
+   You can use the `send()` and `recv()` functions to send and receive data over the socket. Make sure to handle errors and check the return values for the number of bytes sent or received.
+
+   ```c
+   char message[] = "Hello, Server!";
+   if (send(sockfd, message, strlen(message), 0) == -1) {
+       perror("Error sending data");
+       close(sockfd);
+       exit(EXIT_FAILURE);
+   }
+
+   char buffer[1024];
+   int bytes_received = recv(sockfd, buffer, sizeof(buffer), 0);
+   if (bytes_received == -1) {
+       perror("Error receiving data");
+       close(sockfd);
+       exit(EXIT_FAILURE);
+   }
+   ```
+
+6. **Close the Socket:**
+   When you're done with the socket, make sure to close it using the `close()` function:
+
+   ```c
+   close(sockfd);
+   ```
+
+7. **Compile and Run:**
+   Compile your C program, and then run the executable.
+
+Remember that this is just a basic overview of socket programming in C. Real-world applications often involve more complex logic, error handling, and considerations for multiple connections. Additionally, server-side programming involves binding a socket, listening for incoming connections, and handling multiple clients, which requires a different set of functions and logic. Socket programming is a vast topic, so you may want to explore more advanced tutorials and resources as you progress.
