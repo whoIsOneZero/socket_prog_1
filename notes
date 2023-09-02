@@ -93,3 +93,5 @@ int read(newsockfd, buffer, buffer_size);
 * @buffer_size: string length
 */
 int write(newsockfd, buffer, buffer_size);
+
+close() - closes the connection
