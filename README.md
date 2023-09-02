@@ -8,4 +8,7 @@ Getting started.clear
 
 - sys/socket.h: includes a number of definitions of structures needed for sockets.
 
-- netinet.h: contains constants and structures needed for interne domain addresses
+- netinet.h: contains constants and structures needed for internet domain addresses
+
+### Tutorials
+https://www.binarytides.com/socket-programming-c-linux-tutorial/
