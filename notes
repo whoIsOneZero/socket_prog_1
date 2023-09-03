@@ -18,7 +18,7 @@
 6. read()
 7. close()
 
-- Socket port number and type needs to be the same
+- Socket port number and type needs to be the same for client and server
 
 /**
 * socket - returns file descriptor (int) 

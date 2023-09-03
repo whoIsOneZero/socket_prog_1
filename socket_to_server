@@ -8,6 +8,9 @@ struct sockaddr_in {
     char             sin_zero[8];  // zero this if you want to
 };
 
+/**
+* @s_addr: contains the IP address in long format
+*/
 struct in_addr {
     unsigned long s_addr;          // load with inet_pton()
 };
@@ -16,3 +19,12 @@ struct sockaddr {
     unsigned short    sa_family;    // address family, AF_xxx
     char              sa_data[14];  // 14 bytes of protocol address
 };
+
+/*To connect to a remote server, do this first:*/
+struct sockaddr_in sever;
+
+/**
+* inet_addr - converts IP address to a long format
+*/
+/* You need to know the IP address of the remote server you're connecting to*/
+server.sin_addr.s_addr = inet_addr("74.125.235.20");
