@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
     if (socket_desc == -1)
     {
         printf("Could not create socket");
+        perror("socket");
     }
 
     server.sin_addr.s_addr = inet_addr("74.125.235.20");
@@ -21,10 +22,11 @@ int main(int argc, char *argv[])
     //CONNECT TO A REMOTE SERVER
     if (connect(socket_desc, (struct sockaddr *)&server, sizeof(server)) < 0)
     {
-        puts("connect error");
+        perror("connect");
+        /*puts("connect error");*/
         return (1);
     }
 
-    puts("Conntect");
+    puts("Conntected");
     return (0);
 }
