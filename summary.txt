@@ -1,4 +1,6 @@
-Certainly, I can provide you with an overview of socket programming in C. Socket programming allows you to create networked applications that can communicate over a network using sockets. Sockets provide a low-level interface for network communication, enabling data exchange between processes running on different machines. Here's a basic introduction to socket programming in C:
+Socket programming allows you to create networked applications that can communicate over a network using sockets.
+Sockets provide a low-level interface for network communication, enabling data exchange between processes running on different
+machines. Here's a basic introduction to socket programming in C:
 
 1. **Include Necessary Headers:**
    To start working with sockets in C, include the required headers:
