@@ -10,7 +10,7 @@ int main(int argc, char const* argv[])
 {
     int sock = 0, valread, client_fd;
     struct sockaddr_in serv_addr;
-    char* hello = "Hello from client";
+    char* hello = "Hello, server.";
     char buffer[1024] = {0};
 
     if ((sock = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
@@ -33,7 +33,7 @@ int main(int argc, char const* argv[])
     }
 
     send(sock, hello, strlen(hello), 0);
-    printf("Hello message sent\n");
+    printf("Init message sent.\n");
 
     while (1) {
         valread = read(sock, buffer, sizeof(buffer));
