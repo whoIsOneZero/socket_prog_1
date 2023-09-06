@@ -30,6 +30,7 @@ struct sockaddr_in sever;
 server.sin_addr.s_addr = inet_addr("74.125.235.20");
 
 /* Description of data base entry for a single host. */
+/* Store info about host */
 struct hostent
 {
   char *h_name;			/* Official name of host.  */
