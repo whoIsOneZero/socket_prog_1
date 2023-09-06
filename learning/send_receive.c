@@ -45,10 +45,7 @@ int main (int argc, char *argv[])
     puts("Data Sent\n");
 
     //RECEIVE REPLY FROM THE SERVER
-    
-    /*size_t bytes_received;
-    if ((bytes_received = recv(socket_desc, server_reply, sizeof(server_reply) - 1, 0)) < 0)*/
-    
+        
     if( recv(socket_desc, server_reply, 2000, 0) < 0)
     {
         perror("recv");
@@ -56,8 +53,6 @@ int main (int argc, char *argv[])
         
         return (1);
     }
-    /*TEST THIS:
-    server_reply[bytes_received] = '\0';*/
 
     puts("Reply received\n");
     puts(server_reply);
